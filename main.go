@@ -2,11 +2,11 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/tcdw/telegram-home-master/functions"
+	"github.com/tcdw/telegram-home-master/config"
 )
 
 func main() {
-	a := functions.Computer{
+	a := config.Computer{
 		Name: "damn",
 		Mac: "11:22:33:44:55:66",
 	}

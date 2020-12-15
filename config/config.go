@@ -1,8 +1,9 @@
-package functions
+package config
 
 type Config struct {
-	Token string         `json:"token"`
-	ChatID float64       `json:"chatID"`
+	Password string `json:"password"`
+	BotToken string `json:"botToken"`
+	ChatID float64 `json:"chatID"`
 	Computers []Computer `json:"computers"`
 }
 
