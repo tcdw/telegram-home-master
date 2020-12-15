@@ -1,4 +1,4 @@
-package wol
+package wake
 
 import (
 	"errors"
@@ -7,7 +7,7 @@ import (
 	"net"
 )
 
-func wake(addr string, tar string, password []byte) error {
+func ByMachine(addr string, tar string, password []byte) error {
 	target, err := net.ParseMAC(tar)
 	c, err := wol.NewClient()
 	if err != nil {
@@ -17,7 +17,7 @@ func wake(addr string, tar string, password []byte) error {
 	return c.WakePassword(addr, target, password)
 }
 
-func wakeByName(conf config.Config, target string) error {
+func ByName(conf config.Config, target string) error {
 	var item *config.Computer
 	for _, e := range conf.Computers {
 		if e.Name == target {
@@ -36,6 +36,6 @@ func wakeByName(conf config.Config, target string) error {
 	if item.Password != nil {
 		password = *item.Password
 	}
-	err := wake(ip, item.Mac, []byte(password))
+	err := ByMachine(ip, item.Mac, []byte(password))
 	return err
 }
